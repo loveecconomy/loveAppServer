@@ -6,6 +6,13 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var db        = {};
 
+// const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user, CONFIG.db_password, {
+//   host: CONFIG.db_host,
+//   dialect: CONFIG.db_dialect,
+//   port: CONFIG.db_port,
+//   operatorsAliases: false
+// });
+
 var match = CONFIG.database_url.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
 console.log(CONFIG.database_url)
 

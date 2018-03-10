@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
         contentType  : {type: DataTypes.ENUM, values: ['audio','video']},
         genre        : DataTypes.STRING,
         source       : DataTypes.STRING,
-        // author       : DataTypes.STRING,
+        author       : DataTypes.STRING,
         tags         : DataTypes.STRING,
         views        : DataTypes.INTEGER,
         active  : {type: DataTypes.ENUM, values:['True','False']},
