@@ -6,6 +6,7 @@ const create = async function(req, res){
     let user = req.user;
 
     let content_info = req.body;
+        content_info.addedBy = req.user.id
 
 
     [err, content] = await to(Content.create(content_info));

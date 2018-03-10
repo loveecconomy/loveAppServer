@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Model.associate = function(models){
-        this.categories = this.belongsToMany(models.Content, {through: 'contentCategory'});
+        this.contents = this.belongsToMany(models.Content, {through: 'contentCategory'});
     };
 
     Model.prototype.toWeb = function (pw) {

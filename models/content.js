@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Model.associate = function(models){
-        this.contents = this.belongsToMany(models.Category, {through: 'contentCategory'});
+        this.categories = this.belongsToMany(models.Category, {through: 'contentCategory'});
         this.addedBy  = this.belongsTo(models.User);
     };
 
