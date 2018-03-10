@@ -6,13 +6,18 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var db        = {};
 
-const sequelize = new Sequelize(CONFIG.database_url, {
+var match = CONFIG.database_url.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+
+const sequelize = new Sequelize(match[5], match[1], match[2], {
     dialect:  'postgres',
     protocol: 'postgres',
     port:     match[4],
     host:     match[3],
     logging:  true,
-    operatorsAliases: false
+    operatorsAliases: false,
+    dialectOptions: {
+      ssl: true
+  }
 });
 
 fs
