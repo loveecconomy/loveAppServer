@@ -7,6 +7,7 @@ var basename  = path.basename(__filename);
 var db        = {};
 
 var match = CONFIG.database_url.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+console.log(CONFIG.database_url)
 
 const sequelize = new Sequelize(match[5], match[1], match[2], {
     dialect:  'postgres',
