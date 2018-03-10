@@ -6,11 +6,13 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var db        = {};
 
-const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user, CONFIG.db_password, {
-  host: CONFIG.db_host,
-  dialect: CONFIG.db_dialect,
-  port: CONFIG.db_port,
-  operatorsAliases: false
+const sequelize = new Sequelize(CONFIG.database_url, {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    port:     match[4],
+    host:     match[3],
+    logging:  true,
+    operatorsAliases: false
 });
 
 fs
