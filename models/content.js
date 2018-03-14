@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     var Model = sequelize.define('Content', {
+        id:  {allowNull: false, primaryKey: true, type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4},
         title        : DataTypes.STRING,
         contentType  : {type: DataTypes.ENUM, values: ['audio','video']},
         genre        : DataTypes.STRING,

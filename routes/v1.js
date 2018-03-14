@@ -35,7 +35,7 @@ router.delete(  '/categories/:category_id', passport.authenticate('jwt', {sessio
 
 /* Content Routes */
 router.post(    '/contents',             passport.authenticate('jwt', {session:false}), ContentController.create);                  // C
-// router.get(     '/contents',             passport.authenticate('jwt', {session:false}), ContentController.getAll);                  // R
+router.get(     '/contents',             passport.authenticate('jwt', {session:false}), ContentController.getAll);                  // R
 
 router.get(     '/contents/:content_id', passport.authenticate('jwt', {session:false}), custom.content, ContentController.get);     // R
 router.put(     '/contents/:content_id', passport.authenticate('jwt', {session:false}), custom.content, ContentController.update);  // U

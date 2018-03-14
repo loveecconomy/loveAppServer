@@ -5,6 +5,7 @@ const jwt           	= require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
     var Model = sequelize.define('User', {
+        id:  {allowNull: false, primaryKey: true, type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4},
         first     : DataTypes.STRING,
         last      : DataTypes.STRING,
         email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Phone number invalid."} }},

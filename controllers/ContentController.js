@@ -6,7 +6,7 @@ const create = async function(req, res){
     let user = req.user;
 
     let content_info = req.body;
-        content_info.addedBy = req.user.id
+        content_info.UserId = req.user.id;
 
 
     [err, content] = await to(Content.create(content_info));
@@ -18,6 +18,26 @@ const create = async function(req, res){
     return ReS(res,{content:content_json}, 201);
 }
 module.exports.create = create;
+
+const getAll = async function(req, res){
+    res.setHeader('Content-Type', 'application/json');
+    let user = req.user;
+    let err, categories;
+
+    [err, contents] = await to(Content.findAll());
+
+    let contents_json =[]
+    for( let i in contents){
+        let content = contents[i];
+        console.log('content include' + contents[i])
+        let content_info = content.toWeb();
+        contents_json.push(content_info);
+    }
+
+    // console.log('c t', categories_json);
+    return ReS(res, {contents:contents_json});
+}
+module.exports.getAll = getAll;
 
 // const getAll = async function(req, res){
 //     res.setHeader('Content-Type', 'application/json');

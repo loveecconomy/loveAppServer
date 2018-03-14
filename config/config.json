@@ -1,0 +1,23 @@
+{
+    "development": {
+      "username": "local_admin",
+      "password": "Cisco_980",
+      "database": "test1",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": null,
+      "database": "seq-wp-test",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "?",
+      "password": "?",
+      "database": "?",
+      "host": "?",
+      "dialect": "?"
+    }
+  }
