@@ -5,11 +5,25 @@ let category = async function (req, res, next) {
     let category_id, err, category;
     category_id = req.params.category_id;
 
-    [err, category] = await to(Category.findOne({where:{id:category_id}}));
+    [err, category] = await to(Category.findOne(
+        {
+            where:{id:category_id}, 
+        }));
+        
     if(err) return ReE(res, "err finding category");
 
     if(!category) return ReE(res, "category not found with id: "+category_id);
+    let contents_array, contents;
+    [err, contents] = await to(category.getContents());
 
+    contents_array = contents.map(obj=>String(obj.content));
+    let contents_json =[]
+    for( let i in contents){
+        let content = contents[i];
+        let content_info = content.toWeb();
+        contents_json.push(content_info);
+    }
+    category.contents = contents_json;
     req.category = category;
     next();
 }

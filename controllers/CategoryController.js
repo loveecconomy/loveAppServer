@@ -28,7 +28,10 @@ const getAll = async function(req, res){
     let categories_json =[]
     for( let i in categories){
         let category = categories[i];
+        let [contentsErr, contents] =  await  to(category.getContents());
         let category_info = category.toWeb();
+        let total = contents.length;    
+        category_info.totalContent = total;
         categories_json.push(category_info);
     }
 

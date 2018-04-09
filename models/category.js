@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         let json = this.toJSON();
         return json;
     };
-
+ 
     return Model;
 };

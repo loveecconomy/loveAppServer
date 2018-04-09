@@ -11,6 +11,7 @@ const create = async function(req, res){
 
     [err, content] = await to(Content.create(content_info));
     if(err) return ReE(res, err, 422);
+    content.addCategory(req.body.category)
 
     let content_json = content.toWeb();
     content_json.users = [{user:user.id}];
@@ -29,7 +30,6 @@ const getAll = async function(req, res){
     let contents_json =[]
     for( let i in contents){
         let content = contents[i];
-        console.log('content include' + contents[i])
         let content_info = content.toWeb();
         contents_json.push(content_info);
     }
