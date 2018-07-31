@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         password  : DataTypes.STRING,
     });
 
+    Model.associate = function(models){
+        this.detail  = this.hasOne(models.userDetail);
+    };
+
     Model.beforeSave(async (user, options) => {
         let err;
         if (user.changed('password')){

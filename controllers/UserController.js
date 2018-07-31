@@ -1,4 +1,5 @@
 const User          = require('../models').User;
+const UserDetail    = require('../models').userDetail;
 const authService   = require('./../services/AuthService');
 
 module.exports = {
@@ -43,10 +44,22 @@ module.exports = {
         console.log(req);
         userId = req.params.user_id;
         console.log(userId);
-        [err, user] = await to(User.findById(userId,{attributes: {exclude: ['password']}}));
+        [err, user] = await to(
+                User.findById(userId,
+                    {
+                        attributes:
+                            {exclude: ['password']},
+                        include: [
+                            {model:UserDetail,
+                            attributes: {exclude: ["UserId", "createdAt", "id"]}}
+                        ]
+                    },
+                )
+            );
 
 
         if(err){
+            console.log(err);
             err ={
                 message: 'invalid user id'
             };
