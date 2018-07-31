@@ -8,10 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         id:  {allowNull: false, primaryKey: true, type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4},
         first     : DataTypes.STRING,
         last      : DataTypes.STRING,
-        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Phone number invalid."} }},
-        phone     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { len: {args: [7, 20], msg: "Phone number invalid, too short."}, isNumeric: { msg: "not a valid phone number."} }},
-        branch    : {type: DataTypes.STRING, allowNull: true},
-        role      : {type: DataTypes.ENUM, values: ['pastor', 'elder', 'leader', 'none'], defaultValue: 'none'},
+        email     : {type: DataTypes.STRING, allowNull: true, unique: true},
         password  : DataTypes.STRING,
     });
 

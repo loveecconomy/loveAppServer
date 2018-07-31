@@ -20,9 +20,9 @@ router.get('/', function(req, res, next) {
 
 /* User Routes */
 router.post(    '/users/new',       UserController.create);
-router.delete(  '/users',           passport.authenticate('jwt', {session:false}), UserController.login)
+router.post(  '/users/login',       UserController.login);
 
-router.get(     'users/:user_id',   passport.authenticate('jwt', {session:false}), UserController.getUser);
+router.get(     '/users/:user_id',   passport.authenticate('jwt', {session:false}), UserController.getUser);
 router.get(     '/users',           passport.authenticate('jwt', {session:false}), UserController.get);
 
 
