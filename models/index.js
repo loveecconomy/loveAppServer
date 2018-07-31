@@ -21,7 +21,7 @@ const sequelize = new Sequelize(match[5], match[1], match[2], {
     protocol: 'postgres',
     port:     match[4],
     host:     match[3],
-    logging:  true,
+    logging:  console.log,
     operatorsAliases: false,
     dialectOptions: {
       ssl: true
